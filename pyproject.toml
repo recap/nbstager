@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nbstager"
+version = "0.1.0"
+description = "Jupyter Server extension for staging notebook workspaces from repositories, parameters, and data URLs."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Reggie Cushing" }
+]
+keywords = ["jupyter", "binder", "notebooks", "staging", "reproducibility"]
+dependencies = [
+  "jupyter-server>=2"
+]
+
+[project.urls]
+Homepage = "https://github.com/recap/nbstager"
+Repository = "https://github.com/recap/nbstager"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nbstager*"]
+
+[tool.setuptools.package-data]
+nbstager = ["etc/jupyter_server_config.d/*.json"]
