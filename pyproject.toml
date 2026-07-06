@@ -27,3 +27,8 @@ include = ["nbstager*"]
 
 [tool.setuptools.package-data]
 nbstager = ["etc/jupyter_server_config.d/*.json"]
+
+[tool.setuptools.data-files]
+"etc/jupyter/jupyter_server_config.d" = [
+    "nbstager/etc/jupyter/jupyter_server_config.d/nbstager.json"
+]
