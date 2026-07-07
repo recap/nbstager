@@ -10,24 +10,16 @@ It can:
 
 NBStager is designed to work in Binder, JupyterHub, and local JupyterLab environments.
 
+## URL Generation
+
+A web helper tool is avaialble at [https://recap.github.io/nbstager](https://recap.github.io/nbstager) to generate launch URLs.
+
 ## Install
 
-From PyPI, once published:
+From PyPI
 
 ```bash
 pip install nbstager
-```
-
-From GitHub:
-
-```bash
-pip install git+https://github.com/recap/nbstager.git@v0.1.0
-```
-
-For development:
-
-```bash
-pip install -e .
 ```
 
 The package includes a Jupyter Server config file that enables the extension automatically. If needed, enable it manually:
