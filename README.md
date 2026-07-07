@@ -36,7 +36,7 @@ jupyter server extension list
 
 ## Usage
 
-After installing `nbstgaer` to your repo, you can build the lauch URL with the following Python snippet:
+After installing `nbstager` to your repo, you can build the lauch URL with the following Python snippet:
 
 ```python
 import json
