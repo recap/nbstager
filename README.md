@@ -4,11 +4,7 @@ NBStager is a Jupyter Server extension for preparing notebook workspaces from la
 
 It can:
 
-- clone a target Git repository;
 - write launch parameters into a `.env` file;
-- optionally install Python dependencies;
-- optionally install R dependencies;
-- optionally run a target `postBuild` script;
 - stage data files from HTTP(S) URLs;
 - redirect to a notebook in JupyterLab.
 
@@ -57,43 +53,34 @@ NBStager registers this route:
 Example local URL:
 
 ```text
-http://localhost:8888/launch?repo=https://github.com/recap/DataLens&branch=main&notebookpath=DataLens_EDA.ipynb
+http://localhost:8888/launch?notebookpath=mynotebook.ipynb&DATASET_URL=https://example.org/data.csv
 ```
 
 ## Reserved query parameters
 
-| Parameter | Required | Default | Description |
-|---|---:|---|---|
-| `repo` | yes | — | Git repository URL to clone. |
-| `branch` | no | repository default | Branch, tag, or commit to checkout. |
-| `urlpath` | no | `lab/tree` | Jupyter URL prefix used for redirect. |
-| `notebookpath` | no | — | Notebook path relative to the target repository root. |
-| `targetpath` | no | `workspace` | Workspace directory relative to the Jupyter server root. |
-| `overwrite` | no | `1` | If `1`, clear the workspace before staging. |
-| `cleanup` | no | `0` | If `1`, remove wrapper/source files from the server root. |
-| `run_postbuild` | no | `0` | If `1`, run target `postBuild` after cloning. |
-| `install_r_deps` | no | `0` | If `1`, install R deps from `install.R` or `DESCRIPTION`. |
-| `data` | no | — | JSON object or array describing data files to download. |
+| Parameter      | Required | Default | Description                                             |
+| -------------- | -------: | ------- | ------------------------------------------------------- |
+| `notebookpath` |       no | —       | Notebook path relative to the target repository root.   |
+| `data`         |       no | —       | JSON object or array describing data files to download. |
 
 All other query parameters are written to `.env`.
 
 ## Passing notebook parameters
 
 ```text
-/launch?repo=https://github.com/recap/DataLens&CSV_URL=https://example.org/data.csv&DATASET_PID=doi:10.1234/example
+/launch?notebookpath=mynotebook.ipynb&DATASET_URL=https://example.org/data.csv
 ```
 
 creates:
 
 ```dotenv
-CSV_URL=https://example.org/data.csv
-DATASET_PID=doi:10.1234/example
+DATASET_URL=https://example.org/data.csv
 ```
 
 inside:
 
 ```text
-workspace/.env
+.env
 ```
 
 Python notebooks can read it with:
@@ -103,7 +90,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv('.env')
-print(os.getenv('CSV_URL'))
+print(os.getenv('DATASET_URL'))
 ```
 
 R notebooks can read it with:
@@ -111,7 +98,7 @@ R notebooks can read it with:
 ```r
 library(dotenv)
 load_dot_env('.env')
-Sys.getenv('CSV_URL')
+Sys.getenv('DATASET_URL')
 ```
 
 ## Data staging
@@ -137,27 +124,21 @@ data_manifest.json
 
 ## Binder usage
 
-A Binder wrapper repo can install NBStager with:
+In Binder, install NBStager in your `requirements.txt`. Then launch a target repository through the wrapper with:
 
 ```text
-nbstager @ git+https://github.com/recap/nbstager.git@v0.1.0
+https://mybinder.org/v2/gh/OWNER/WRAPPER_REPO/main?urlpath=launch?notebookpath=mynotebook.ipynb&DATASET_URL=https://example.org/data.csv
 ```
 
-Then launch a target repository through the wrapper with:
-
-```text
-https://mybinder.org/v2/gh/OWNER/WRAPPER_REPO/main?urlpath=launch%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FOWNER%252FTARGET_REPO%26notebookpath%3Dnotebook.ipynb
-```
-
-## Development
-
-```bash
-pip install -e .
-jupyter lab --ServerApp.token='' --ServerApp.log_level=DEBUG
-```
-
-Then open:
-
-```text
-http://localhost:8888/launch?repo=https://github.com/recap/DataLens&branch=main&notebookpath=DataLens_EDA.ipynb
-```
+<!-- ## Development -->
+<!---->
+<!-- ```bash -->
+<!-- pip install -e . -->
+<!-- jupyter lab --ServerApp.token='' --ServerApp.log_level=DEBUG -->
+<!-- ``` -->
+<!---->
+<!-- Then open: -->
+<!---->
+<!-- ```text -->
+<!-- http://localhost:8888/launch?repo=https://github.com/recap/DataLens&branch=main&notebookpath=DataLens_EDA.ipynb -->
+<!-- ``` -->

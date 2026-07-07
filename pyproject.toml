@@ -1,5 +1,10 @@
 [build-system]
-requires = ["setuptools>=64", "wheel"]
+requires = [
+  "setuptools>=64", 
+  "wheel", 
+  "build",
+  "jupyter-packaging>=0.10"]
+
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,23 +17,14 @@ license = { text = "Apache-2.0" }
 authors = [
   { name = "Reggie Cushing" }
 ]
-keywords = ["jupyter", "binder", "notebooks", "staging", "reproducibility"]
-dependencies = [
-  "jupyter-server>=2"
-]
 
 [project.urls]
 Homepage = "https://github.com/recap/nbstager"
 Repository = "https://github.com/recap/nbstager"
 
+[tool.setuptools]
+include-package-data = true
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["nbstager*"]
-
-[tool.setuptools.package-data]
-nbstager = ["etc/jupyter_server_config.d/*.json"]
-
-[tool.setuptools.data-files]
-"etc/jupyter/jupyter_server_config.d" = [
-    "nbstager/etc/jupyter/jupyter_server_config.d/nbstager.json"
-]
