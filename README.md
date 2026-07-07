@@ -133,7 +133,7 @@ https://mybinder.org/v2/gh/OWNER/WRAPPER_REPO/main?urlpath=launch?notebookpath=m
 Working example:
 
 ```text
-https://mybinder.org/v2/gh/recap/DataLens/dev?urlpath=launch%3Fnotebookpath%3DDataLens.ipynb%26DATASET_URL%3Dhttps%3A%2F%2Fdoi.org%2F10.5281%2Fzenodo.4681153
+https://mybinder.org/v2/gh/recap/Datalens/dev?urlpath=launch%3Fdata%3D%255B%257B%2522url%2522%253A%2522https%253A%252F%252Fsamplelib.com%252Fcsv%252Fsample-edge-cases.csv%2522%252C%2522path%2522%253A%2522data%252Fsample-edge-cases.csv%2522%257D%255D%26repo%3Dhttps%253A%252F%252Fgithub.com%252Frecap%252FDatalens%26branch%3Ddev%26notebookpath%3DDataLens.ipynb%26DATASET_URL%3Dhttps%253A%252F%252Fdoi.org%252F10.5281%252Fzenodo.17708939
 ```
 
 <!-- ## Development -->
