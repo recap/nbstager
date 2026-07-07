@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nbstager"
-version = "0.1.0"
+version = "0.1.1"
 description = "Jupyter Server extension for staging notebook workspaces from repositories, parameters, and data URLs."
 readme = "README.md"
 requires-python = ">=3.9"
