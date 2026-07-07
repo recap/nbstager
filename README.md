@@ -130,6 +130,12 @@ In Binder, install NBStager in your `requirements.txt`. Then launch a target rep
 https://mybinder.org/v2/gh/OWNER/WRAPPER_REPO/main?urlpath=launch?notebookpath=mynotebook.ipynb&DATASET_URL=https://example.org/data.csv
 ```
 
+Working example:
+
+```text
+https://mybinder.org/v2/gh/recap/DataLens/dev?urlpath=launch%3Fnotebookpath%3DDataLens.ipynb%26DATASET_URL%3Dhttps%3A%2F%2Fdoi.org%2F10.5281%2Fzenodo.4681153
+```
+
 <!-- ## Development -->
 <!---->
 <!-- ```bash -->
