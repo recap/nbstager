@@ -114,6 +114,11 @@ CSV_URL=https://example.org/data.csv</textarea
 
         document.getElementById("customBinderContainer").style.display =
             custom ? "block" : "none";
+
+        const local = document.getElementById("binderBase").value === "local";
+        document.getElementById("targetRepo").disabled = local;
+        document.getElementById("branch").disabled = local;
+        
     }
 
     function applyDefaultsFromUrl() {
@@ -267,8 +272,6 @@ CSV_URL=https://example.org/data.csv</textarea
             inner.set("data", dataJson);
         }
 
-        inner.set("repo", targetRepo);
-        if (branch) inner.set("branch", branch);
         if (notebookpath) inner.set("notebookpath", notebookpath);
 
         for (const line of paramsText.split("\n")) {
