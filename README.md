@@ -36,7 +36,7 @@ jupyter server extension list
 
 ## Usage
 
-After installing `nbstgaer` to your repo, you can luanch a Binder session with a URL like:
+After installing `nbstgaer` to your repo, you can build the lauch URL with the following Python snippet:
 
 ```python
 import json
@@ -156,30 +156,3 @@ NBStager downloads the files into the workspace and writes:
 ```text
 data_manifest.json
 ```
-
-## Binder usage
-
-In Binder, install NBStager in your `requirements.txt`. Then launch a target repository through the wrapper with:
-
-```text
-https://mybinder.org/v2/gh/OWNER/WRAPPER_REPO/main?urlpath=launch?notebookpath=mynotebook.ipynb&DATASET_URL=https://example.org/data.csv
-```
-
-Working example:
-
-```text
-https://mybinder.org/v2/gh/recap/Datalens/dev?urlpath=launch%3Fdata%3D%255B%257B%2522url%2522%253A%2522https%253A%252F%252Fsamplelib.com%252Fcsv%252Fsample-edge-cases.csv%2522%252C%2522path%2522%253A%2522data%252Fsample-edge-cases.csv%2522%257D%255D%26repo%3Dhttps%253A%252F%252Fgithub.com%252Frecap%252FDatalens%26branch%3Ddev%26notebookpath%3DDataLens.ipynb%26DATASET_URL%3Dhttps%253A%252F%252Fdoi.org%252F10.5281%252Fzenodo.17708939
-```
-
-<!-- ## Development -->
-<!---->
-<!-- ```bash -->
-<!-- pip install -e . -->
-<!-- jupyter lab --ServerApp.token='' --ServerApp.log_level=DEBUG -->
-<!-- ``` -->
-<!---->
-<!-- Then open: -->
-<!---->
-<!-- ```text -->
-<!-- http://localhost:8888/launch?repo=https://github.com/recap/DataLens&branch=main&notebookpath=DataLens_EDA.ipynb -->
-<!-- ``` -->
