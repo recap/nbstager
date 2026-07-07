@@ -34,6 +34,49 @@ Check:
 jupyter server extension list
 ```
 
+## Usage
+
+After installing `nbstgaer` to your repo, you can luanch a Binder session with a URL like:
+
+```python
+import json
+from urllib.parse import urlencode, quote
+
+config = {
+  "binder_base": "https://mybinder.org",
+  "owner": "OWNER",
+  "repo": "REPO",
+  "branch": "BRANCH",
+  "notebookpath":"MYNOTEBOOK.IPYNB",
+  "env": { "DATASET_URL":"http://example.org" },
+  "data":[ {"url": "http://example.org/example.csv", "path": "data/example.csv"} ]
+}
+
+binder_base = config.get("binder_base", "https://mybinder.org").rstrip("/")
+owner = config["owner"]
+repo = config["repo"]
+branch = config.get("branch", "main")
+notebookpath = config.get("notebookpath")
+
+inner = {}
+
+if notebookpath:
+    inner["notebookpath"] = notebookpath
+
+for key, value in config.get("env", {}).items():
+    inner[key] = value
+
+if config.get("data"):
+    inner["data"] = json.dumps(config["data"], separators=(",", ":"))
+
+launch_urlpath = "launch?" + urlencode(inner)
+
+print(
+    f"{binder_base}/v2/gh/{owner}/{repo}/{branch}"
+    f"?urlpath={quote(launch_urlpath, safe='')}"
+)
+```
+
 ## Endpoint
 
 NBStager registers this route:

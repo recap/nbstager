@@ -1,0 +1,16 @@
+{
+  "binder_base": "https://mybinder.org",
+  "owner": "OWNER",
+  "repo": "REPO",
+  "branch": "BRANCH",
+  "notebookpath": "MYNOTEBOOK.IPYNB",
+  "env": {
+    "DATASET_URL": "http://example.org"
+  },
+  "data": [
+    {
+      "url": "http://example.org/example.csv",
+      "path": "data/example.csv"
+    }
+  ]
+}
